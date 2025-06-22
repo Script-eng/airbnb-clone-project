@@ -125,3 +125,23 @@ Tracks the financial transactions associated with bookings.
 *   **Properties & Bookings**: A `Property` can have many `Bookings`, but a `Booking` is for exactly one `Property`. (One-to-Many)
 *   **Bookings & Reviews**: A `Booking` can have at most one `Review`. This ensures a guest can only review a stay once. (One-to-One)
 *   **Bookings & Payments**: Each `Booking` is associated with one `Payment` transaction. (One-to-One)
+
+
+## ✨ Feature Breakdown
+
+This project is broken down into several core features that collectively create a functional booking platform. Each feature is designed to handle a specific part of the user journey for both guests and hosts.
+
+### 1. User Authentication & Profile Management
+This feature handles all aspects of user identity. It allows individuals to sign up for a new account, log in securely, and manage their personal profile information. This system is the gateway to the platform, ensuring that all actions are tied to a verified user, which is critical for secure bookings and listings.
+
+### 2. Property Listing & Management
+This is the core toolset for hosts. It enables property owners to create, edit, and manage their listings with details like descriptions, photos, pricing, and amenities. This feature is responsible for building the platform's inventory, giving hosts the control they need to market their spaces effectively.
+
+### 3. Search & Discovery
+The primary feature for guests, allowing them to search for available properties using filters like location, dates, and number of guests. The search results will be displayed in an intuitive way, making it easy for users to find and compare potential stays. An effective search mechanism is crucial for converting visitors into bookers.
+
+### 4. Booking & Reservation System
+This feature manages the entire reservation workflow. Guests can select travel dates, see a final price breakdown including fees, and submit a booking request. The system handles availability checks and confirms the reservation, forming the central transactional engine of the application.
+
+### 5. Review and Rating System
+After a stay is completed, this feature allows guests to leave a rating and a written review for the property. This builds a foundation of trust and transparency on the platform. Reviews help future guests make informed decisions and incentivize hosts to provide high-quality experiences.
