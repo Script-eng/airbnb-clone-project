@@ -145,3 +145,28 @@ This feature manages the entire reservation workflow. Guests can select travel d
 
 ### 5. Review and Rating System
 After a stay is completed, this feature allows guests to leave a rating and a written review for the property. This builds a foundation of trust and transparency on the platform. Reviews help future guests make informed decisions and incentivize hosts to provide high-quality experiences.
+
+
+## 🛡️ API Security
+
+Securing the API is a top priority for this project. Given that the application will handle sensitive user data, booking information, and financial transactions, a multi-layered security approach will be implemented to protect the platform and its users from threats.
+
+### Key Security Measures
+
+1.  **Authentication (Token-Based with JWT):**
+    Every protected endpoint will require a valid JSON Web Token (JWT). When a user logs in, the server will issue a short-lived, signed token. This token must be included in the header of subsequent requests to verify the user's identity, ensuring that anonymous users cannot access or modify sensitive data.
+
+2.  **Authorization (Permission-Based):**
+    Authentication confirms *who* a user is, while authorization determines *what* they are allowed to do. We will implement a role-based permission system where actions are restricted based on user roles (e.g., a user can only edit their own profile, and a host can only modify their own properties). This prevents users from accessing or altering data that does not belong to them.
+
+3.  **Rate Limiting:**
+    To protect the API from abuse and denial-of-service (DoS) attacks, rate limiting will be enforced. This will restrict the number of requests a single user or IP address can make within a certain time frame, ensuring the application remains available and performant for all legitimate users.
+
+4.  **Input Validation and Sanitization:**
+    All data received from clients will be rigorously validated. GraphQL's strong typing system provides a first layer of defense, but we will add business-level validation (e.g., ensuring a booking's end date is after its start date). This prevents data corruption and protects against common vulnerabilities like injection attacks.
+
+### Why Security is Crucial
+
+*   **Protecting User Data:** The `Users` entity contains Personally Identifiable Information (PII). Strong authentication and authorization are essential to prevent data breaches, protect user privacy, and maintain trust.
+*   **Securing Financial Transactions:** The `Bookings` and `Payments` systems are the financial core of the app. Security measures are critical to ensure that payment details are handled securely and to prevent fraudulent transactions or unauthorized access to financial history.
+*   **Maintaining Platform Integrity:** Without proper security, the platform could be overrun with spam listings, fake reviews, or malicious user activity. Enforcing strict rules through authorization and rate limiting ensures the integrity and trustworthiness of the content on our platform.
