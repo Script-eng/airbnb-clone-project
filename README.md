@@ -26,3 +26,40 @@ This project utilizes a modern, robust, and scalable set of technologies chosen 
 | **Continuous Integration**| <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white"> | Automates the CI/CD pipeline, including running tests and deploying the application.                |
 
 ---
+
+## 👥 Team Roles
+
+This project simulates a real-world development environment where distinct roles collaborate to build, deploy, and maintain the application.
+
+### Backend Developer
+
+The Backend Developer is responsible for building and maintaining the server-side logic of the application. They are the primary architects of the core services that power the platform.
+
+**Key Responsibilities:**
+*   Implement business logic and application features using the **Django** framework.
+*   Design and build the **GraphQL API** for client-server communication.
+*   Implement user authentication, authorization, and session management.
+*   Write unit and integration tests to ensure code quality and reliability.
+
+### Database Administrator (DBA)
+
+The Database Administrator designs, implements, and maintains the application's database. They ensure data integrity, performance, and security.
+
+**Key Responsibilities:**
+*   Design the relational database schema in **MySQL**, defining tables, relationships, and constraints.
+*   Manage schema changes and data migrations as the application evolves.
+*   Monitor database performance and optimize complex queries for efficiency.
+*   Implement backup, recovery, and data security procedures.
+
+### DevOps Engineer
+
+The DevOps Engineer focuses on automating and streamlining the development pipeline. They build the bridge between development and operations to ensure a smooth, efficient, and reliable delivery process.
+
+**Key Responsibilities:**
+*   Create and manage **Docker** configurations for consistent development and production environments.
+*   Set up and maintain the **CI/CD pipeline** using **GitHub Actions** to automate builds, testing, and deployments.
+*   Manage application infrastructure, monitoring, and logging.
+
+### Other Key Roles
+
+*   **Security Specialist:** Responsible for application and data security, conducting vulnerability assessments, and implementing security best practices.
