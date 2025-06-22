@@ -63,3 +63,65 @@ The DevOps Engineer focuses on automating and streamlining the development pipel
 ### Other Key Roles
 
 *   **Security Specialist:** Responsible for application and data security, conducting vulnerability assessments, and implementing security best practices.
+
+
+## 🗂️ Database Design
+
+The database is the backbone of the application, designed using a relational model in **MySQL**. The structure is centered around a few key entities that manage users, properties, and the booking process.
+
+### Core Entities
+
+#### 1. Users
+Stores information about individuals who sign up, whether they are guests or hosts.
+
+*   `id` (Primary Key): Unique identifier for each user.
+*   `email`: User's email address, used for login and communication.
+*   `password_hash`: Hashed version of the user's password for secure storage.
+*   `full_name`: The user's full name.
+*   `created_at`: Timestamp when the user account was created.
+
+#### 2. Properties
+Represents the rental listings created by hosts.
+
+*   `id` (Primary Key): Unique identifier for each property.
+*   `owner_id` (Foreign Key -> Users.id): The user who owns and manages the property.
+*   `title`: The name of the listing (e.g., "Cozy Downtown Loft").
+*   `description`: Detailed information about the property.
+*   `price_per_night`: The cost to rent the property for one night.
+*   `location`: Address or geographical coordinates of the property.
+
+#### 3. Bookings
+Represents a confirmed reservation of a property by a user.
+
+*   `id` (Primary Key): Unique identifier for each booking.
+*   `user_id` (Foreign Key -> Users.id): The user who made the booking (the guest).
+*   `property_id` (Foreign Key -> Properties.id): The property being booked.
+*   `start_date`: The check-in date for the reservation.
+*   `end_date`: The check-out date for the reservation.
+*   `total_price`: The calculated total cost of the stay.
+
+#### 4. Reviews
+Contains feedback and ratings left by guests after their stay.
+
+*   `id` (Primary Key): Unique identifier for each review.
+*   `booking_id` (Foreign Key -> Bookings.id): The specific booking this review is for.
+*   `rating`: A numerical score (e.g., 1-5) given by the guest.
+*   `comment`: The textual feedback or comment from the guest.
+*   `created_at`: Timestamp when the review was submitted.
+
+#### 5. Payments
+Tracks the financial transactions associated with bookings.
+
+*   `id` (Primary Key): Unique identifier for each payment.
+*   `booking_id` (Foreign Key -> Bookings.id): The booking this payment is for.
+*   `amount`: The total amount paid.
+*   `status`: The current state of the payment (e.g., `pending`, `completed`, `failed`).
+*   `transaction_id`: The unique ID provided by the payment gateway (e.g., Stripe).
+
+### Entity Relationships
+
+*   **Users & Properties**: A `User` (as a host) can have many `Properties`, but each `Property` belongs to only one `User`. (One-to-Many)
+*   **Users & Bookings**: A `User` (as a guest) can make many `Bookings`, but each `Booking` is made by a single `User`. (One-to-Many)
+*   **Properties & Bookings**: A `Property` can have many `Bookings`, but a `Booking` is for exactly one `Property`. (One-to-Many)
+*   **Bookings & Reviews**: A `Booking` can have at most one `Review`. This ensures a guest can only review a stay once. (One-to-One)
+*   **Bookings & Payments**: Each `Booking` is associated with one `Payment` transaction. (One-to-One)
